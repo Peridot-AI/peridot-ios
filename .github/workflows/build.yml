@@ -1,0 +1,39 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Xcode
+        run: xcodebuild -version
+
+      - name: Pick a simulator
+        id: sim
+        run: |
+          udid=$(xcrun simctl list devices available -j | python3 -c '
+          import json, sys
+          devices = json.load(sys.stdin)["devices"]
+          ios = sorted((rt for rt in devices if ".iOS-" in rt), key=lambda rt: [int(p) for p in rt.split(".iOS-")[1].split("-")], reverse=True)
+          print(next(d["udid"] for rt in ios for d in devices[rt] if d["name"].startswith("iPhone")))
+          ')
+          echo "udid=$udid" >> "$GITHUB_OUTPUT"
+
+      - name: Unit tests (simulator)
+        run: |
+          set -o pipefail
+          xcodebuild test -project Peridot.xcodeproj -scheme Peridot \
+            -destination "id=${{ steps.sim.outputs.udid }}" CODE_SIGNING_ALLOWED=NO
+
+      - name: Release build for devices (unsigned)
+        run: |
+          set -o pipefail
+          xcodebuild build -project Peridot.xcodeproj -scheme Peridot -configuration Release \
+            -destination "generic/platform=iOS" CODE_SIGNING_ALLOWED=NO

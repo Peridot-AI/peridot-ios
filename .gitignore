@@ -1,0 +1,8 @@
+xcuserdata/
+DerivedData/
+build/
+*.xcuserstate
+.DS_Store
+*.ipa
+*.dSYM
+*.dSYM.zip

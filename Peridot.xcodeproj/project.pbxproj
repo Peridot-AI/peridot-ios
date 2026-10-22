@@ -1,0 +1,397 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		685F9E9877BE3D5FE2DFFD36 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FAD6922992B94A46D8CC843F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 35C90A146DD2973D9DBD75C7;
+			remoteInfo = Peridot;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A16C68D259C34F5FAF12EB18 /* Peridot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Peridot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C48D7CF348BAC80B1740E741 /* PeridotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PeridotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		B66C555CAED39ABAE7ADB6BD /* Peridot */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Peridot;
+			sourceTree = "<group>";
+		};
+		3517FAE6BA0948FBCA01FC24 /* PeridotTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = PeridotTests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		760DE2CD2D46AD0988B8C9DF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A66F310A4CF5A4B9512B7342 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B162C1A1D24E185BC9F45720 = {
+			isa = PBXGroup;
+			children = (
+				B66C555CAED39ABAE7ADB6BD /* Peridot */,
+				3517FAE6BA0948FBCA01FC24 /* PeridotTests */,
+				52E674182750DB11A33E8C31 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		52E674182750DB11A33E8C31 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A16C68D259C34F5FAF12EB18 /* Peridot.app */,
+				C48D7CF348BAC80B1740E741 /* PeridotTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		35C90A146DD2973D9DBD75C7 /* Peridot */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 874B8F45A4BE208ED37AC70C /* Build configuration list for PBXNativeTarget "Peridot" */;
+			buildPhases = (
+				0DEF05CEAE64AE9ED1867500 /* Sources */,
+				760DE2CD2D46AD0988B8C9DF /* Frameworks */,
+				E7FC1A920A1C9C9EB159F69A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				B66C555CAED39ABAE7ADB6BD /* Peridot */,
+			);
+			name = Peridot;
+			packageProductDependencies = (
+			);
+			productName = Peridot;
+			productReference = A16C68D259C34F5FAF12EB18 /* Peridot.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3531EF2A662D042CF4980EE0 /* PeridotTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 31F95781F4E946A9D06EC926 /* Build configuration list for PBXNativeTarget "PeridotTests" */;
+			buildPhases = (
+				554922F0E35E8D1CB217FE2B /* Sources */,
+				A66F310A4CF5A4B9512B7342 /* Frameworks */,
+				3A2108D7C54A9F1BB83185D3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				23940306524DDB23342BA344 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				3517FAE6BA0948FBCA01FC24 /* PeridotTests */,
+			);
+			name = PeridotTests;
+			packageProductDependencies = (
+			);
+			productName = PeridotTests;
+			productReference = C48D7CF348BAC80B1740E741 /* PeridotTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FAD6922992B94A46D8CC843F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					35C90A146DD2973D9DBD75C7 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					3531EF2A662D042CF4980EE0 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 35C90A146DD2973D9DBD75C7;
+					};
+				};
+			};
+			buildConfigurationList = D886280B21A7193B5C87B2DA /* Build configuration list for PBXProject "Peridot" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				es,
+				"zh-Hans",
+				ja,
+				fr,
+				de,
+				it,
+			);
+			mainGroup = B162C1A1D24E185BC9F45720;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 52E674182750DB11A33E8C31 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				35C90A146DD2973D9DBD75C7 /* Peridot */,
+				3531EF2A662D042CF4980EE0 /* PeridotTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E7FC1A920A1C9C9EB159F69A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A2108D7C54A9F1BB83185D3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0DEF05CEAE64AE9ED1867500 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		554922F0E35E8D1CB217FE2B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		23940306524DDB23342BA344 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 35C90A146DD2973D9DBD75C7 /* Peridot */;
+			targetProxy = 685F9E9877BE3D5FE2DFFD36 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2F85CD36C415CAF4F3EB93AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3E7485A80F10C96BD09BEBBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		32ED82B1AE318F84B9073548 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Peridot-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Peridot;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ai.peridot.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CA916947C32CFC0DF38A73BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Peridot-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Peridot;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ai.peridot.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		651EB945C76372F84AE7AB79 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ai.peridot.app.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Peridot.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Peridot";
+			};
+			name = Debug;
+		};
+		4A9ACF7ECE91A3EF59659AB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ai.peridot.app.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Peridot.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Peridot";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D886280B21A7193B5C87B2DA /* Build configuration list for PBXProject "Peridot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F85CD36C415CAF4F3EB93AC /* Debug */,
+				3E7485A80F10C96BD09BEBBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		874B8F45A4BE208ED37AC70C /* Build configuration list for PBXNativeTarget "Peridot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32ED82B1AE318F84B9073548 /* Debug */,
+				CA916947C32CFC0DF38A73BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		31F95781F4E946A9D06EC926 /* Build configuration list for PBXNativeTarget "PeridotTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				651EB945C76372F84AE7AB79 /* Debug */,
+				4A9ACF7ECE91A3EF59659AB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FAD6922992B94A46D8CC843F /* Project object */;
+}
