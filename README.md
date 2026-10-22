@@ -13,7 +13,7 @@ Sign in with Google (Google's sign-in page in a system web authentication sheet)
 
 ## Privacy
 
-The app only talks to the Peridot API (`https://tryperidot.io/api`). The sign-in token is kept in the Keychain, on this device only (it is not included in backups).
+The app only talks to the Peridot API (`https://api.tryperidot.io/api`). The sign-in token is kept in the Keychain, on this device only (it is not included in backups).
 
 ## Build
 
