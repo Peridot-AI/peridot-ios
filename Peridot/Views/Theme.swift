@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// The website's palette (dark only, like peridot.ai).
+/// The website's palette (dark only, like tryperidot.io).
 enum Theme {
     static let background = Color(hex: 0x141413)
     static let surface = Color(hex: 0x1B1A19)

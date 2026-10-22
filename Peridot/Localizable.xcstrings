@@ -289,43 +289,43 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Noch kein Konto? Erstelle eins auf peridot.ai"
+            "value": "Noch kein Konto? Erstelle eins auf tryperidot.io"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "No account yet? Create one on peridot.ai"
+            "value": "No account yet? Create one on tryperidot.io"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "¿Aún no tienes cuenta? Créala en peridot.ai"
+            "value": "¿Aún no tienes cuenta? Créala en tryperidot.io"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pas encore de compte ? Créez-en un sur peridot.ai"
+            "value": "Pas encore de compte ? Créez-en un sur tryperidot.io"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Non hai ancora un account? Creane uno su peridot.ai"
+            "value": "Non hai ancora un account? Creane uno su tryperidot.io"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "アカウントをお持ちでない場合は peridot.ai で作成"
+            "value": "アカウントをお持ちでない場合は tryperidot.io で作成"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "还没有账户？在 peridot.ai 上创建"
+            "value": "还没有账户？在 tryperidot.io 上创建"
           }
         }
       }

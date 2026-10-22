@@ -1,6 +1,6 @@
 # Peridot for iOS
 
-[Peridot AI](https://peridot.ai) on iPhone and iPad: a native SwiftUI app that talks to the same API as the website, the desktop app and the [CLI](https://github.com/Peridot-AI/peridot-cli). The Android app is [peridot-android](https://github.com/Peridot-AI/peridot-android).
+[Peridot AI](https://tryperidot.io) on iPhone and iPad: a native SwiftUI app that talks to the same API as the website, the desktop app and the [CLI](https://github.com/Peridot-AI/peridot-cli). The Android app is [peridot-android](https://github.com/Peridot-AI/peridot-android).
 
 - **Chat** with streamed answers, rendered as Markdown (code blocks with a copy button, tables, lists, links). Stop an answer at any time; a stopped answer is kept.
 - **Models and effort**: tap the model name at the top. Models your plan doesn't include are shown locked.
@@ -9,11 +9,11 @@
 - Without signing in you can chat with the free limits; history needs an account.
 - In English, Spanish, Chinese, Japanese, French, German and Italian, like the website.
 
-Sign in with Google (Google's sign-in page in a system web authentication sheet) or with email and password. New email accounts are created on [peridot.ai](https://peridot.ai/signup).
+Sign in with Google (Google's sign-in page in a system web authentication sheet) or with email and password. New email accounts are created on [tryperidot.io](https://tryperidot.io/signup).
 
 ## Privacy
 
-The app only talks to the Peridot API (`https://peridot.ai/api`). The sign-in token is kept in the Keychain, on this device only (it is not included in backups).
+The app only talks to the Peridot API (`https://tryperidot.io/api`). The sign-in token is kept in the Keychain, on this device only (it is not included in backups).
 
 ## Build
 

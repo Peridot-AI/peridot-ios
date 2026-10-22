@@ -77,9 +77,9 @@ final class MarkdownTests: XCTestCase {
     }
 
     func testLinks() {
-        XCTAssertEqual(Markdown.spans("see [docs](https://peridot.ai/docs) or https://x.dev/a."), [
+        XCTAssertEqual(Markdown.spans("see [docs](https://tryperidot.io/docs) or https://x.dev/a."), [
             MDSpan(text: "see "),
-            MDSpan(text: "docs", url: "https://peridot.ai/docs"),
+            MDSpan(text: "docs", url: "https://tryperidot.io/docs"),
             MDSpan(text: " or "),
             MDSpan(text: "https://x.dev/a", url: "https://x.dev/a"),
             MDSpan(text: "."),
