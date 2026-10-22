@@ -189,6 +189,53 @@
         }
       }
     },
+    "continue_with_google": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Weiter mit Google"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continue with Google"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continuar con Google"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continuer avec Google"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continua con Google"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Googleで続行"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用 Google 继续"
+          }
+        }
+      }
+    },
     "copy": {
       "extractionState": "manual",
       "localizations": {
@@ -847,49 +894,49 @@
         }
       }
     },
-    "google_on_web": {
+    "google_unavailable": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mit Google erstellte Konten können sich hier noch nicht anmelden. Nutze vorerst peridot.ai."
+            "value": "Die Anmeldung mit Google ist gerade nicht verfügbar. Versuche es erneut oder melde dich mit deiner E-Mail an."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Accounts created with Google can’t sign in here yet. Use peridot.ai for now."
+            "value": "Google sign-in isn’t available right now. Try again, or sign in with your email."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Las cuentas creadas con Google aún no pueden iniciar sesión aquí. Por ahora, usa peridot.ai."
+            "value": "El inicio de sesión con Google no está disponible ahora. Inténtalo de nuevo o inicia sesión con tu correo."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Les comptes créés avec Google ne peuvent pas encore se connecter ici. Utilisez peridot.ai pour l’instant."
+            "value": "La connexion avec Google n’est pas disponible pour le moment. Réessayez ou connectez-vous avec votre e-mail."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Gli account creati con Google non possono ancora accedere qui. Per ora usa peridot.ai."
+            "value": "L’accesso con Google non è disponibile al momento. Riprova o accedi con la tua email."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "Google で作成したアカウントは、まだここではログインできません。当面は peridot.ai をご利用ください。"
+            "value": "現在 Google でログインできません。もう一度お試しいただくか、メールでログインしてください。"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "使用 Google 创建的账户暂时无法在此登录。目前请使用 peridot.ai。"
+            "value": "Google 登录暂时不可用。请重试，或使用邮箱登录。"
           }
         }
       }
@@ -1360,6 +1407,53 @@
           "stringUnit": {
             "state": "translated",
             "value": "打开菜单"
+          }
+        }
+      }
+    },
+    "or": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "oder"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "or"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "o"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ou"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "oppure"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "または"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "或"
           }
         }
       }

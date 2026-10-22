@@ -9,7 +9,7 @@
 - Without signing in you can chat with the free limits; history needs an account.
 - In English, Spanish, Chinese, Japanese, French, German and Italian, like the website.
 
-Sign-in is by email and password. New accounts are created on [peridot.ai](https://peridot.ai/signup); accounts created with Google can't sign in to the app yet.
+Sign in with Google (Google's sign-in page in a system web authentication sheet) or with email and password. New email accounts are created on [peridot.ai](https://peridot.ai/signup).
 
 ## Privacy
 
@@ -33,12 +33,22 @@ xcodebuild test -project Peridot.xcodeproj -scheme Peridot -destination 'platfor
 
 Edit the scheme (*Run → Arguments → Environment Variables*) and enable `PERIDOT_API_URL` / `PERIDOT_WEB_URL`; they point at a local `bun run dev` server (`http://localhost:3001/api`) by default. Plain HTTP is allowed only for local addresses.
 
+### Google sign-in (one-time setup)
+
+The app uses no Google SDK: it opens Google's sign-in page in an `ASWebAuthenticationSession` for the app's own **iOS** OAuth client, redeems the code with PKCE (iOS clients have no secret) and sends the ID token to `POST /api/auth/google`. It reads the client ID from `GET /api/auth/config`, so nothing is built into the app. Once per deployment:
+
+1. In [Google Cloud Console → APIs & Services → Credentials](https://console.cloud.google.com/apis/credentials), in the project of the server's `GOOGLE_CLIENT_ID`: **Create credentials → OAuth client ID → iOS**, bundle ID `ai.peridot.app` (App Store ID and Team ID are optional).
+2. Put its client ID (`….apps.googleusercontent.com`) in the server's `.env` as `GOOGLE_IOS_CLIENT_ID` and restart the server. `/api/auth/config` then hands it to the app, and the server accepts ID tokens issued for it.
+3. The OAuth consent screen must be published (or your account listed as a test user).
+
+The redirect goes to the reversed client ID (`com.googleusercontent.apps.…:/oauth2redirect`), which the authentication session catches by itself: no URL type in `Info.plist` is needed. Without `GOOGLE_IOS_CLIENT_ID` the app says Google sign-in isn't available; email sign-in keeps working.
+
 ## Layout
 
 ```
 Peridot/
   PeridotApp.swift, Config.swift
-  API/        PeridotAPI (REST + streaming), SSEParser, Keychain, API models
+  API/        PeridotAPI (REST + streaming), GoogleSignIn, SSEParser, Keychain, API models
   Markdown/   Markdown parser (same rules as the Android app)
   Store/      ChatStore: account, chat, streaming, history
   Views/      ChatView, HistoryView, ModelPickerView, AccountView, SignInView, MarkdownView, Theme

@@ -21,6 +21,15 @@ struct PeridotAPI: Sendable {
         try await send("POST", "/auth/login", body: ["email": email, "password": password])
     }
 
+    /// Signs in with a Google ID token (from `GoogleSignIn`).
+    func googleLogin(idToken: String) async throws -> AuthResponse {
+        try await send("POST", "/auth/google", body: ["idToken": idToken])
+    }
+
+    func authConfig() async throws -> AuthConfig {
+        try await send("GET", "/auth/config")
+    }
+
     func me() async throws -> MeResponse {
         try await send("GET", "/auth/me")
     }

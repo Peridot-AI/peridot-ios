@@ -25,6 +25,11 @@ struct AuthResponse: Decodable, Sendable {
     let user: User
 }
 
+/// Public sign-in config; the iOS app signs in to Google with `googleIosClientId`.
+struct AuthConfig: Decodable, Sendable {
+    let googleIosClientId: String?
+}
+
 struct Limits: Decodable, Equatable, Sendable {
     var plan: String = "free"
     var unlimited: Bool = false

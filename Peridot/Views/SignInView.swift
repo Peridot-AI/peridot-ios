@@ -1,11 +1,13 @@
+import AuthenticationServices
 import SwiftUI
 
-/// Sign in with email and password. New accounts are made on the website (it also has Google
-/// sign-in and the legal pages); the app signs in to them.
+/// Sign in with Google or with email and password. New email accounts are made on the website
+/// (it also has the legal pages); Google sign-in works for any Google account, like on the website.
 struct SignInView: View {
     @Environment(ChatStore.self) private var store
     @Environment(\.dismiss) private var dismiss
     @Environment(\.openURL) private var openURL
+    @Environment(\.webAuthenticationSession) private var webAuthenticationSession
     @State private var email = ""
     @State private var password = ""
     @FocusState private var field: Field?
@@ -24,6 +26,28 @@ struct SignInView: View {
                         .multilineTextAlignment(.center)
                         .padding(.top, 18)
                         .padding(.bottom, 28)
+
+                    Button(action: signInWithGoogle) {
+                        HStack(spacing: 10) {
+                            Image("GoogleLogo")
+                                .resizable()
+                                .frame(width: 18, height: 18)
+                                .accessibilityHidden(true)
+                            Text("continue_with_google").fontWeight(.medium)
+                        }
+                        .frame(maxWidth: .infinity, minHeight: 48)
+                        .foregroundStyle(Theme.text)
+                        .overlay(RoundedRectangle(cornerRadius: 12).stroke(Theme.border))
+                        .contentShape(RoundedRectangle(cornerRadius: 12))
+                    }
+                    .disabled(store.authBusy)
+
+                    HStack(spacing: 12) {
+                        Rectangle().fill(Theme.border).frame(height: 1)
+                        Text("or").font(.footnote).foregroundStyle(Theme.muted)
+                        Rectangle().fill(Theme.border).frame(height: 1)
+                    }
+                    .padding(.vertical, 18)
 
                     VStack(spacing: 12) {
                         TextField("email", text: $email)
@@ -73,11 +97,6 @@ struct SignInView: View {
                         .foregroundStyle(Theme.mint)
                         .multilineTextAlignment(.center)
                         .padding(.top, 22)
-                    Text("google_on_web")
-                        .font(.footnote)
-                        .foregroundStyle(Theme.muted)
-                        .multilineTextAlignment(.center)
-                        .padding(.top, 6)
                 }
                 .frame(maxWidth: 420)
                 .padding(.horizontal, 28)
@@ -99,6 +118,13 @@ struct SignInView: View {
         guard canSubmit else { return }
         Task {
             if await store.signIn(email: email, password: password) { dismiss() }
+        }
+    }
+
+    private func signInWithGoogle() {
+        store.authError = nil
+        Task {
+            if await store.signInWithGoogle(using: webAuthenticationSession) { dismiss() }
         }
     }
 }

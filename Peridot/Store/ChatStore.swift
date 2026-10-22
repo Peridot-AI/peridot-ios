@@ -1,5 +1,7 @@
 import Foundation
 import Observation
+import AuthenticationServices
+import SwiftUI
 
 enum Role { case user, model }
 
@@ -63,12 +65,30 @@ final class ChatStore {
     // MARK: Account
 
     func signIn(email: String, password: String) async -> Bool {
+        let api = api
+        return await authenticate { try await api.login(email: email.trimmingCharacters(in: .whitespaces), password: password) }
+    }
+
+    /// Signs in with Google through a web authentication session (see `GoogleSignIn`).
+    func signInWithGoogle(using session: WebAuthenticationSession) async -> Bool {
+        let api = api
+        return await authenticate {
+            guard let clientID = try await api.authConfig().googleIosClientId, !clientID.isEmpty else {
+                throw APIError(message: String(localized: "google_unavailable"), status: 503)
+            }
+            guard let idToken = try await GoogleSignIn.idToken(clientID: clientID, session: session) else { return nil }
+            return try await api.googleLogin(idToken: idToken)
+        }
+    }
+
+    /// Runs a sign-in; `call` returns nil when the user backed out, which is not an error.
+    private func authenticate(_ call: () async throws -> AuthResponse?) async -> Bool {
         guard !authBusy else { return false }
         authBusy = true
         authError = nil
         defer { authBusy = false }
         do {
-            let result = try await api.login(email: email.trimmingCharacters(in: .whitespaces), password: password)
+            guard let result = try await call() else { return false }
             token = result.token
             Keychain.token = result.token
             user = result.user
