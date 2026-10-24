@@ -30,6 +30,13 @@ final class ChatStore {
     private(set) var loadingConversation = false
     /// A one-off message for an alert.
     var notice: String?
+    /// The open chat's public link, if it is shared
+    private(set) var share: ShareInfo?
+    private(set) var referrals: ReferralStats?
+    private(set) var plans: CheckoutConfig?
+    private(set) var offer: CheckoutOffer?
+    /// A payment was started in the browser: the account is reloaded until the plan changes
+    private(set) var awaitingPlan = false
 
     private(set) var authBusy = false
     var authError: String?
@@ -120,6 +127,10 @@ final class ChatStore {
                 let me = try await api.me()
                 user = me.user
                 limits = me.limits
+                if awaitingPlan, (me.user.plan ?? "free") != "free" {
+                    awaitingPlan = false
+                    notice = String(localized: "plan_active")
+                }
             } catch {
                 if !expiredSession(error), user?.email.isEmpty ?? true {
                     // Offline at start-up: stay signed in, the next request will tell
@@ -175,6 +186,73 @@ final class ChatStore {
         conversationID = nil
         streaming = false
         loadingConversation = false
+        share = nil
+    }
+
+    // MARK: Sharing
+
+    func loadShare() {
+        guard let id = conversationID else { return }
+        Task {
+            let share = try? await api.shareStatus(id)
+            if conversationID == id { self.share = share }
+        }
+    }
+
+    /// Makes (or refreshes) the public copy of the open chat and returns its link.
+    func shareChat() async -> URL? {
+        guard let id = conversationID else { return nil }
+        do {
+            let share = try await api.share(id)
+            self.share = share
+            return URL(string: shareLink(share.id))
+        } catch {
+            if !expiredSession(error) { notice = describe(error) }
+            return nil
+        }
+    }
+
+    func stopSharing() {
+        guard let id = conversationID else { return }
+        Task {
+            do {
+                try await api.stopSharing(id)
+                share = nil
+                notice = String(localized: "sharing_stopped")
+            } catch {
+                if !expiredSession(error) { notice = describe(error) }
+            }
+        }
+    }
+
+    // MARK: Invites and plans
+
+    func loadReferrals() {
+        guard token != nil else { return }
+        Task { if let r = try? await api.referrals() { referrals = r } }
+    }
+
+    func loadPlans() {
+        Task {
+            do {
+                plans = try await api.checkoutConfig()
+                offer = token != nil ? (try? await api.checkoutOffer()) : nil
+            } catch {
+                notice = describe(error)
+            }
+        }
+    }
+
+    /// Stripe's checkout page for the plan, to open in the browser; back in the app the account is reloaded.
+    func checkout(plan: String) async -> URL? {
+        do {
+            let url = try await api.checkoutSession(plan: plan, lang: Locale.current.language.languageCode?.identifier ?? "en")
+            awaitingPlan = true
+            return url
+        } catch {
+            if !expiredSession(error) { notice = describe(error) }
+            return nil
+        }
     }
 
     func open(_ conversation: Conversation) {

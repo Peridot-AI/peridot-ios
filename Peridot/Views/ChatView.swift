@@ -8,6 +8,8 @@ struct ChatView: View {
     @State private var showModels = false
     @State private var showAccount = false
     @State private var showSignIn = false
+    @State private var showShare = false
+    @State private var sharing: SharedURL?
     @FocusState private var composerFocused: Bool
 
     var body: some View {
@@ -54,6 +56,17 @@ struct ChatView: View {
                     }
                     .accessibilityHint(Text("choose_model"))
                 }
+                if store.signedIn, store.conversationID != nil, !store.messages.isEmpty {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button {
+                            store.loadShare()
+                            showShare = true
+                        } label: {
+                            Image(systemName: "square.and.arrow.up")
+                        }
+                        .accessibilityLabel(Text("share_chat"))
+                    }
+                }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button { store.newChat() } label: {
                         Image(systemName: "square.and.pencil")
@@ -75,6 +88,18 @@ struct ChatView: View {
         .sheet(isPresented: $showAccount) {
             AccountView().presentationDetents([.medium, .large])
         }
+        .confirmationDialog("share_chat", isPresented: $showShare, titleVisibility: .visible) {
+            Button(store.share == nil ? "share_link" : "update_link") {
+                Task { if let url = await store.shareChat() { sharing = SharedURL(url: url) } }
+            }
+            if store.share != nil {
+                Button("stop_sharing", role: .destructive) { store.stopSharing() }
+            }
+            Button("cancel", role: .cancel) {}
+        } message: {
+            Text("share_explain")
+        }
+        .sheet(item: $sharing) { ActivitySheet(url: $0.url).presentationDetents([.medium]) }
         .fullScreenCover(isPresented: $showSignIn) {
             SignInView()
         }

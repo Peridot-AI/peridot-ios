@@ -125,3 +125,55 @@ func cleanError(_ message: String?) -> String? {
     if let text = object["message"] as? String { return text }
     return message
 }
+
+// MARK: Shared chats
+
+/// A chat's public, read-only copy at webURL/share/<id>.
+struct ShareInfo: Decodable, Equatable, Sendable {
+    let id: String
+    var updatedAt: String?
+}
+
+struct ShareResponse: Decodable, Sendable {
+    let share: ShareInfo?
+}
+
+// MARK: Invites
+
+struct ReferralStats: Decodable, Equatable, Sendable {
+    let code: String
+    var invited: Int = 0
+    var paid: Int = 0
+    var earnedCents: Int = 0
+    var friendPercentOff: Int = 0
+    var referrerCreditCents: Int = 0
+}
+
+// MARK: Plans and checkout
+
+struct CheckoutPlan: Decodable, Identifiable, Equatable, Sendable {
+    let id: String
+    let name: String
+    let amountCents: Int
+    var dailyMessages: Int?
+}
+
+struct CheckoutConfig: Decodable, Equatable, Sendable {
+    var enabled: Bool
+    var plans: [CheckoutPlan]
+}
+
+struct Trial: Decodable, Equatable, Sendable {
+    let plan: String
+    let days: Int
+}
+
+/// What checkout offers this account: the free trial (once, Plus) and the discount for invited friends.
+struct CheckoutOffer: Decodable, Equatable, Sendable {
+    var trial: Trial?
+    var friendPercentOff: Int?
+}
+
+struct CheckoutSession: Decodable, Sendable {
+    let url: String
+}

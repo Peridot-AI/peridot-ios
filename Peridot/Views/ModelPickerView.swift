@@ -3,6 +3,7 @@ import SwiftUI
 struct ModelPickerView: View {
     @Environment(ChatStore.self) private var store
     @Environment(\.dismiss) private var dismiss
+    @State private var showUpgrade = false
 
     var body: some View {
         NavigationStack {
@@ -13,12 +14,16 @@ struct ModelPickerView: View {
                     }
                     ForEach(store.models) { model in
                         Button {
+                            if model.isLocked {
+                                // Signed out: the plans need an account, so there is nothing to upgrade yet
+                                if store.signedIn { showUpgrade = true }
+                                return
+                            }
                             store.select(model)
                             dismiss()
                         } label: {
                             row(model)
                         }
-                        .disabled(model.isLocked)
                     }
                 } header: {
                     Text("model")
@@ -44,6 +49,7 @@ struct ModelPickerView: View {
             .scrollContentBackground(.hidden)
             .background(Theme.background)
             .navigationTitle(Text("choose_model"))
+            .sheet(isPresented: $showUpgrade) { UpgradeView() }
             .navigationBarTitleDisplayMode(.inline)
         }
     }

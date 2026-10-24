@@ -5,6 +5,7 @@ struct AccountView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.openURL) private var openURL
     @State private var confirmSignOut = false
+    @State private var showUpgrade = false
 
     var body: some View {
         NavigationStack {
@@ -46,6 +47,20 @@ struct AccountView: View {
                 }
                 .listRowBackground(Theme.surface)
 
+                if store.user != nil, (store.limits?.plan ?? store.user?.plan ?? "free") == "free", !(store.limits?.unlimited ?? false) {
+                    Section {
+                        Button { showUpgrade = true } label: {
+                            Text("upgrade_plan").font(.headline).frame(maxWidth: .infinity)
+                        }
+                        .foregroundStyle(Theme.onMint)
+                    }
+                    .listRowBackground(Theme.mint)
+                }
+
+                if store.user != nil {
+                    InviteSection().listRowBackground(Theme.surface)
+                }
+
                 Section {
                     Button("sign_out", role: .destructive) { confirmSignOut = true }
                 }
@@ -63,6 +78,7 @@ struct AccountView: View {
             .navigationTitle(Text(verbatim: "Peridot"))
             .navigationBarTitleDisplayMode(.inline)
             .onAppear { store.refreshAccount() }
+            .sheet(isPresented: $showUpgrade) { UpgradeView() }
             .confirmationDialog("sign_out_title", isPresented: $confirmSignOut, titleVisibility: .visible) {
                 Button("sign_out", role: .destructive) {
                     store.signOut()

@@ -70,6 +70,50 @@ struct PeridotAPI: Sendable {
         _ = try await data("DELETE", "/conversations/\(id)")
     }
 
+    // MARK: Sharing (a public, read-only copy of a chat)
+
+    func shareStatus(_ id: Int) async throws -> ShareInfo? {
+        let response: ShareResponse = try await send("GET", "/conversations/\(id)/share")
+        return response.share
+    }
+
+    func share(_ id: Int) async throws -> ShareInfo {
+        let response: ShareResponse = try await send("POST", "/conversations/\(id)/share", body: [:])
+        guard let share = response.share else { throw APIError(message: "Could not share this chat", status: 500) }
+        return share
+    }
+
+    func stopSharing(_ id: Int) async throws {
+        _ = try await data("DELETE", "/conversations/\(id)/share")
+    }
+
+    // MARK: Invites
+
+    func referrals() async throws -> ReferralStats {
+        try await send("GET", "/referrals")
+    }
+
+    // MARK: Plans (the payment itself happens on Stripe's page in the browser)
+
+    func checkoutConfig() async throws -> CheckoutConfig {
+        try await send("GET", "/checkout/config")
+    }
+
+    func checkoutOffer() async throws -> CheckoutOffer {
+        try await send("GET", "/checkout/offer")
+    }
+
+    /// Stripe's checkout page for the plan; the consents were given in the app.
+    func checkoutSession(plan: String, lang: String) async throws -> URL {
+        let response: CheckoutSession = try await send("POST", "/checkout/session", body: [
+            "plan": plan,
+            "lang": lang,
+            "consent": ["terms": true, "immediateStart": true],
+        ])
+        guard let url = URL(string: response.url) else { throw APIError(message: "Could not start the payment", status: 502) }
+        return url
+    }
+
     // MARK: Streaming chat
 
     /// Streams one answer as text chunks. Ending the iteration (or cancelling the task that
