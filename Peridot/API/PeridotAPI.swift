@@ -93,7 +93,7 @@ struct PeridotAPI: Sendable {
         try await send("GET", "/referrals")
     }
 
-    // MARK: Plans (the payment itself happens on Stripe's page in the browser)
+    // MARK: Plans (the payment itself happens on the website's checkout in the browser)
 
     func checkoutConfig() async throws -> CheckoutConfig {
         try await send("GET", "/checkout/config")
@@ -103,13 +103,9 @@ struct PeridotAPI: Sendable {
         try await send("GET", "/checkout/offer")
     }
 
-    /// Stripe's checkout page for the plan; the consents were given in the app.
-    func checkoutSession(plan: String, lang: String) async throws -> URL {
-        let response: CheckoutSession = try await send("POST", "/checkout/session", body: [
-            "plan": plan,
-            "lang": lang,
-            "consent": ["terms": true, "immediateStart": true],
-        ])
+    /// The website's checkout for the plan, with a one-time code that signs the browser in to this account.
+    func appCheckout(plan: String) async throws -> URL {
+        let response: CheckoutSession = try await send("POST", "/checkout/app", body: ["plan": plan])
         guard let url = URL(string: response.url) else { throw APIError(message: "Could not start the payment", status: 502) }
         return url
     }

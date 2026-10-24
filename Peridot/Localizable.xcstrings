@@ -3197,100 +3197,6 @@
         }
       }
     },
-    "consent_terms": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ich akzeptiere die Nutzungsbedingungen und habe die Datenschutzerklärung gelesen."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "I accept the Terms of service and have read the Privacy policy."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Acepto los Términos del servicio y he leído la Política de privacidad."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "J'accepte les Conditions d'utilisation et j'ai lu la Politique de confidentialité."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Accetto i Termini di servizio e ho letto l'Informativa sulla privacy."
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "利用規約に同意し、プライバシーポリシーを読みました。"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "我接受服务条款，并已阅读隐私政策。"
-          }
-        }
-      }
-    },
-    "consent_immediate": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ich verlange, dass mein Plan sofort beginnt, vor Ablauf der 14-tägigen Widerrufsfrist, und mir ist bewusst, dass ich mein Widerrufsrecht mit Beginn verliere."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "I ask for my plan to start right away, before the 14-day withdrawal period ends, and I understand that I lose my right of withdrawal once it starts."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pido que mi plan empiece de inmediato, antes de que termine el plazo de desistimiento de 14 días, y entiendo que pierdo mi derecho de desistimiento una vez que empiece."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Je demande que mon forfait commence immédiatement, avant la fin du délai de rétractation de 14 jours, et je comprends que je perds mon droit de rétractation dès qu'il commence."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Chiedo che il mio piano inizi subito, prima della fine del periodo di recesso di 14 giorni, e comprendo di perdere il diritto di recesso una volta iniziato."
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "14日間のクーリングオフ期間の終了前にプランをすぐに開始することを求め、開始と同時に撤回権を失うことを理解しています。"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "我要求套餐立即开始（在 14 天撤回期结束前），并知悉一旦开始即失去撤回权。"
-          }
-        }
-      }
-    },
     "continue_to_payment": {
       "extractionState": "manual",
       "localizations": {
@@ -3391,43 +3297,43 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Die Zahlung öffnet sich auf der sicheren Stripe-Seite in deinem Browser. Kartendaten erreichen nie unsere Server."
+            "value": "Der Checkout öffnet sich im Browser, bereits angemeldet. Kartendaten verarbeitet Stripe, sie erreichen nie unsere Server."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The payment opens on Stripe's secure page in your browser. Card details never touch our servers."
+            "value": "The checkout opens in your browser, already signed in. Card details are handled by Stripe and never touch our servers."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "El pago se abre en la página segura de Stripe en tu navegador. Los datos de la tarjeta nunca llegan a nuestros servidores."
+            "value": "El pago se abre en tu navegador con la sesión ya iniciada. Stripe gestiona los datos de la tarjeta, que nunca llegan a nuestros servidores."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Le paiement s'ouvre sur la page sécurisée de Stripe dans votre navigateur. Les données de carte ne passent jamais par nos serveurs."
+            "value": "Le paiement s'ouvre dans votre navigateur, déjà connecté. Les données de carte sont traitées par Stripe et ne passent jamais par nos serveurs."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Il pagamento si apre sulla pagina sicura di Stripe nel browser. I dati della carta non passano mai dai nostri server."
+            "value": "Il checkout si apre nel browser con l'accesso già effettuato. I dati della carta sono gestiti da Stripe e non passano mai dai nostri server."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "支払いはブラウザでStripeの安全なページが開きます。カード情報が当社のサーバーに届くことはありません。"
+            "value": "チェックアウトはログイン済みの状態でブラウザに開きます。カード情報はStripeが処理し、当社のサーバーに届くことはありません。"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "付款将在浏览器中的 Stripe 安全页面打开，卡信息不会经过我们的服务器。"
+            "value": "结账页面将在浏览器中打开，并已自动登录。卡信息由 Stripe 处理，不会经过我们的服务器。"
           }
         }
       }

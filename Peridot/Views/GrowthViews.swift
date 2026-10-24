@@ -44,22 +44,15 @@ struct InviteSection: View {
     }
 }
 
-/// Pick a plan and pay on Stripe's page in the browser. Back in the app the account is reloaded,
-/// and an alert says when the plan is active.
+/// Pick a plan and pay on the website's checkout in the browser, signed in for this account (the terms are
+/// accepted there). Back in the app the account is reloaded, and an alert says when the plan is active.
 struct UpgradeView: View {
     @Environment(ChatStore.self) private var store
     @Environment(\.dismiss) private var dismiss
     @Environment(\.openURL) private var openURL
     @Environment(\.scenePhase) private var scenePhase
     @State private var selected = "plus"
-    @State private var terms = false
-    @State private var immediate = false
     @State private var busy = false
-
-    /// Buyers from Poland get the statements at purchase in Polish, as on the website.
-    private var polish: Bool {
-        Locale.current.language.languageCode?.identifier == "pl" || TimeZone.current.identifier == "Europe/Warsaw"
-    }
 
     private var paid: Bool { (store.user?.plan ?? store.limits?.plan ?? "free") != "free" }
 
@@ -91,39 +84,17 @@ struct UpgradeView: View {
                             .listRowBackground(Theme.surface)
                     }
                     Section {
-                        Toggle(isOn: $terms) {
-                            Text(verbatim: polish ? "Akceptuję Regulamin i zapoznałem(-am) się z Polityką prywatności." : String(localized: "consent_terms"))
-                                .font(.footnote)
-                        }
-                        HStack {
-                            Button("terms") { openURL(legalURL("terms")) }
-                            Button("privacy") { openURL(legalURL("privacy")) }
-                        }
-                        .buttonStyle(.borderless)
-                        .font(.footnote)
-                        .foregroundStyle(Theme.muted)
-                        Toggle(isOn: $immediate) {
-                            Text(verbatim: polish
-                                ? "Żądam rozpoczęcia świadczenia usługi przed upływem 14-dniowego terminu na odstąpienie od umowy i przyjmuję do wiadomości, że z chwilą rozpoczęcia świadczenia tracę prawo odstąpienia od umowy."
-                                : String(localized: "consent_immediate"))
-                                .font(.footnote)
-                        }
-                    } footer: {
-                        Text("payment_in_browser")
-                    }
-                    .tint(Theme.mint)
-                    .listRowBackground(Theme.surface)
-
-                    Section {
                         Button(action: pay) {
                             Text(buttonTitle(config))
                                 .font(.headline)
                                 .frame(maxWidth: .infinity)
+                                .foregroundStyle(Theme.onMint)
                         }
-                        .disabled(!terms || !immediate || busy || !config.enabled)
+                        .disabled(busy || !config.enabled)
+                        .listRowBackground(Theme.mint.opacity(config.enabled ? 1 : 0.4))
+                    } footer: {
+                        Text("payment_in_browser")
                     }
-                    .listRowBackground(Theme.mint.opacity(terms && immediate ? 1 : 0.4))
-                    .foregroundStyle(Theme.onMint)
                 } else {
                     ProgressView().tint(Theme.mint).frame(maxWidth: .infinity).listRowBackground(Color.clear)
                 }
@@ -144,13 +115,6 @@ struct UpgradeView: View {
                 if !waiting, paid { dismiss() }
             }
         }
-    }
-
-    private func legalURL(_ page: String) -> URL {
-        let url = Config.webURL.appendingPathComponent(page)
-        guard polish, var parts = URLComponents(url: url, resolvingAgainstBaseURL: false) else { return url }
-        parts.queryItems = [URLQueryItem(name: "lang", value: "pl")]
-        return parts.url ?? url
     }
 
     private func buttonTitle(_ config: CheckoutConfig) -> LocalizedStringKey {

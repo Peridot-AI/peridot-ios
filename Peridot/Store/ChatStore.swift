@@ -243,10 +243,10 @@ final class ChatStore {
         }
     }
 
-    /// Stripe's checkout page for the plan, to open in the browser; back in the app the account is reloaded.
+    /// The website's checkout for the plan, to open in the browser; back in the app the account is reloaded.
     func checkout(plan: String) async -> URL? {
         do {
-            let url = try await api.checkoutSession(plan: plan, lang: Locale.current.language.languageCode?.identifier ?? "en")
+            let url = try await api.appCheckout(plan: plan)
             awaitingPlan = true
             return url
         } catch {

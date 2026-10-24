@@ -174,6 +174,7 @@ struct CheckoutOffer: Decodable, Equatable, Sendable {
     var friendPercentOff: Int?
 }
 
+/// The address of the website's checkout, signed in for this account.
 struct CheckoutSession: Decodable, Sendable {
     let url: String
 }
